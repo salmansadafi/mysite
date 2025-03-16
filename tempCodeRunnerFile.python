@@ -1,0 +1,27 @@
+real1, imag1 = map(int, input("Enter real and imaginary part of first number: ").split())
+operator = input("Enter operator (+, -, *, /): ").strip()
+real2, imag2 = map(int, input("Enter real and imaginary part of second number: ").split())
+
+num1_real = real1
+num1_imag = imag1
+num2_real = real2
+num2_imag = imag2
+
+if operator == '+':
+    result_real = num1_real + num2_real
+    result_imag = num1_imag + num2_imag
+elif operator == '-':
+    result_real = num1_real - num2_real
+    result_imag = num1_imag - num2_imag
+elif operator == '*':
+    result_real = num1_real * num2_real - num1_imag * num2_imag
+    result_imag = num1_real * num2_imag + num1_imag * num2_real
+elif operator == '/':
+    denominator = num2_real**2 + num2_imag**2
+    result_real = (num1_real * num2_real + num1_imag * num2_imag) / denominator
+    result_imag = (num1_imag * num2_real - num1_real * num2_imag) / denominator
+else:
+    print("Invalid operator")
+    exit()
+
+print(f"({round(result_real, 2)})+({round(result_imag, 2)})i")
