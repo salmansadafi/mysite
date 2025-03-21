@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 
-
+{% load blog-tags %}
 
 <!-- start banner Area -->
 <section class="banner-area relative blog-home-banner" id="home">
@@ -154,7 +154,7 @@
 				<div class="widget-wrap">
 					{% include 'blog/blog-search.html' %}
 					{% include 'blog/blog-writer.html' %}
-					{% include 'blog/blog-popular-post.html' %}
+					{% latest_post 2%}
 					{% include 'blog/blog-ads.html' %}
 					{% include 'blog/blog-post-category.html' %}
 					{% include 'blog/blog-newsletter.html' %}
