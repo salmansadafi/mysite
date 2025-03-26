@@ -26,9 +26,11 @@ def blog_single_view(request,pid):
     return render(request, 'blog/blog-single.html',context)
 
 
-# def blog_category(request,cat_name):
-#     posts = Post.objects.filter(status=1,published_date__lte=timezone.now())
-#     posts = posts.filter(category__name=cat_name)
-#     context={'posts':posts} 
-#     return render(request, 'blog/blog-home.html',context)
+def blog_search(request):
+    posts=Post.objects.filter(status=1,published_date__lte=timezone.now())
+    if request.method == 'GET':
+        if s:= request.GET.get('s'): # python walrus
+            posts = posts.filter(content__contains=s)
+    context={'posts':posts}
+    return render(request, 'blog/blog-home.html',context)
 
