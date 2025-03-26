@@ -3,10 +3,12 @@ from blog.models import Post
 from django.utils import timezone
 
 # Create your views here.
-def blog_view(request,cat_name=None):
+def blog_view(request,**kwargs):
     posts=Post.objects.filter(status=1,published_date__lte=timezone.now())
-    if cat_name:
-        posts = posts.filter(category__name=cat_name)
+    if kwargs.get('cat_name') != None:
+        posts = posts.filter(category__name=kwargs['cat_name'])
+    if kwargs.get('author_username') != None:
+        posts = posts.filter(author__username=kwargs['author_username']) # author__username --> because author is a foreign key and it is related to user
     context={'posts':posts} 
     return render(request, 'blog/blog-home.html',context)
 
@@ -24,9 +26,9 @@ def blog_single_view(request,pid):
     return render(request, 'blog/blog-single.html',context)
 
 
-def blog_category(request,cat_name):
-    posts = Post.objects.filter(status=1,published_date__lte=timezone.now())
-    posts = posts.filter(category__name=cat_name)
-    context={'posts':posts} 
-    return render(request, 'blog/blog-home.html',context)
+# def blog_category(request,cat_name):
+#     posts = Post.objects.filter(status=1,published_date__lte=timezone.now())
+#     posts = posts.filter(category__name=cat_name)
+#     context={'posts':posts} 
+#     return render(request, 'blog/blog-home.html',context)
 
