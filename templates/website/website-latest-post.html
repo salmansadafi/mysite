@@ -27,7 +27,7 @@
 								{% endfor %}
 							</ul>
 						</div>
-						<a href="#">
+						<a href="{% url 'blog:single' pid=post.id %}">
 							<h4 class="title">{{post.title}}</h4>
 						</a>
 						<p>
