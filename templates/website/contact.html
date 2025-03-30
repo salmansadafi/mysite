@@ -74,7 +74,7 @@
 
 							<input name="subject" placeholder="Enter subject" onfocus="this.placeholder = ''"
 								onblur="this.placeholder = 'Enter subject'" class="common-input mb-20 form-control"
-								required="" type="text">
+								type="text">
 						</div>
 						<div class="col-lg-6 form-group">
 							<textarea class="common-textarea form-control" name="message" placeholder="Enter Messege"
@@ -90,16 +90,7 @@
 					</div>
 				</form>
 			</div>
-			{% if messages %}
-			{% for message in messages %}
-			<div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-				{{ message }}
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			{% endfor %}
-			{% endif %}
+			
 		</div>
 	</div>
 </section>

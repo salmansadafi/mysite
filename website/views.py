@@ -14,6 +14,9 @@ def contact_view(request):
     if request.method == 'POST':
         form = contactForm(request.POST)
         if form.is_valid():
+            form.save(commit=False)
+            contact = form.save(commit=False)
+            contact.name = "unknown"
             form.save()
             messages.success(request,'Thanks for contact us')
         else:
