@@ -8,6 +8,8 @@ def blog_view(request,**kwargs):
     posts=Post.objects.filter(status=1,published_date__lte=timezone.now())
     if kwargs.get('cat_name') != None:
         posts = posts.filter(category__name=kwargs['cat_name'])
+    if kwargs.get('tag_name') != None:
+        posts = posts.filter(tags__name=kwargs['tag_name'])
     if kwargs.get('author_username') != None:
         posts = posts.filter(author__username=kwargs['author_username']) # author__username --> because author is a foreign key and it is related to user
 
