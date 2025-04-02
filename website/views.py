@@ -20,7 +20,7 @@ def contact_view(request):
             form.save()
             messages.success(request,'Thanks for contact us')
         else:
-            messages.error(request,'Error')
+            messages.error(request,'Error, please try again')
     form = contactForm()
     return render(request,'website/contact.html',{'form':form})
 
