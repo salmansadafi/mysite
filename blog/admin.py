@@ -1,5 +1,5 @@
 from django.contrib import admin
-from blog.models import Post,Category
+from blog.models import Post,Category,comment
 from django_summernote.admin import SummernoteModelAdmin
 # Register your models here.
 
@@ -15,5 +15,12 @@ class PostAdmin(SummernoteModelAdmin):
     search_fields = ['title', 'content']  # Adds a search box to the admin list view
     summernotefields = ('content',)
 
+
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('name', 'subject', 'post', 'created_date', 'approved')
+    list_filter = ('approved', 'created_date')
+    search_fields = ('name', 'subject', 'message')
+
 admin.site.register(Post,PostAdmin) #--> @admin.register(Post)
 admin.site.register(Category)
+admin.site.register(comment,CommentAdmin)
