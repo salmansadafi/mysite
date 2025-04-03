@@ -33,7 +33,7 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse("blog:single", kwargs={"pid": self.id})
     
-class comment(models.Model):
+class Comment(models.Model):
     post=models.ForeignKey(Post,on_delete=models.SET_NULL,null=True)
     name=models.CharField(max_length=200)
     email=models.EmailField()
