@@ -17,7 +17,7 @@ class PostAdmin(SummernoteModelAdmin):
 
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('name', 'subject', 'post', 'created_date', 'approved')
+    list_display = ('name', 'subject', 'created_date', 'approved')
     list_filter = ('approved', 'created_date')
     search_fields = ('name', 'subject', 'message')
 
