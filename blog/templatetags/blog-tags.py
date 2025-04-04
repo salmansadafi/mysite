@@ -1,5 +1,5 @@
 from django import template
-from blog.models import Post,Category
+from blog.models import Post,Category,Comment
 import django.utils.timezone as timezone
 register = template.Library()
 
@@ -17,4 +17,8 @@ def post_category():
     for name in categories:
         cat_dict[name]=posts.filter(category=name).count()
     return {'categories':cat_dict}
+
+@register.simple_tag(name='comment_count')
+def comment_count(pid):
+    return Comment.objects.filter(post=pid,approved=True).count()
     
