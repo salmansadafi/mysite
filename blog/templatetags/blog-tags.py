@@ -18,7 +18,10 @@ def post_category():
         cat_dict[name]=posts.filter(category=name).count()
     return {'categories':cat_dict}
 
+
 @register.simple_tag(name='comment_count')
 def comment_count(pid):
     return Comment.objects.filter(post=pid,approved=True).count()
+
+
     
