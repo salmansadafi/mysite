@@ -17,6 +17,7 @@ class Post(models.Model):
     title=models.CharField(max_length=200)
     content =models.TextField()
     tags=TaggableManager()
+    login_require = models.BooleanField(default=False)
     category=models.ManyToManyField(Category)
     counted_views = models.IntegerField(default=0)
     status = models.BooleanField(default=False)
