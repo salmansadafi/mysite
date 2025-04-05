@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'website.apps.WebsiteConfig',
     'blog',
+    'accounts',
 
     'django.contrib.humanize',
     'django_extensions',
