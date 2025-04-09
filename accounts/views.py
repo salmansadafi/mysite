@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db.models import Q
 from .forms import CustomUserCreationForm
+from django.contrib import messages
 
 # Create your views here.
 
@@ -13,8 +14,11 @@ def signup_view(request):
         if request.method == 'POST':
             form=CustomUserCreationForm(request.POST)
             if form.is_valid():
+                messages.success(request,'Account created successfully')
                 form.save()
                 return redirect('/')
+            else:
+                messages.error(request,'Error, please try again')
         form=CustomUserCreationForm()
         context={'form':form}
         return render(request,'accounts/signup.html',context)
@@ -25,19 +29,21 @@ def login_view(request):
         if request.method == 'POST':
             form=AuthenticationForm(request,data=request.POST)
             if form.is_valid():
+                messages.success(request,'Logged in successfully')
                 username_or_email=form.cleaned_data.get('username')
                 password=form.cleaned_data.get('password')
-            username_or_email=request.POST.get('username')
-            password=request.POST.get('password')
-            try:
-                user_obj = User.objects.get(Q(username=username_or_email) | Q(email=username_or_email))
-                username = user_obj.username  # دریافت یوزرنیم معادل ایمیل
-            except User.DoesNotExist:
-                username = username_or_email
-            user=authenticate(request,username=username,password=password)
-            if user is not None:
-                login(request,user)
-                return redirect('/')
+
+                try:
+                    user_obj = User.objects.get(Q(username=username_or_email) | Q(email=username_or_email))
+                    username = user_obj.username  # دریافت یوزرنیم معادل ایمیل
+                except User.DoesNotExist:
+                    username = username_or_email
+                user=authenticate(request,username=username,password=password)
+                if user is not None:
+                    login(request,user)
+                    return redirect('/')
+            else:
+                messages.error(request,'Error, invalid username or password')
         form=AuthenticationForm()
         context={'form':form}
         return render(request,'accounts/login.html',context)
