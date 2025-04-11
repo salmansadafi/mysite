@@ -1,0 +1,17 @@
+{
+  "app": "dgango-travel",
+  "port": 80,
+  "build": {
+    "location": "iran"
+  },
+  "disks": [
+    {
+      "name": "media",
+      "mountTo": "path/to/folder"
+    },
+    {
+      "name": "static",
+      "mountTo": "path/to/folder"
+    }
+  ]
+}
