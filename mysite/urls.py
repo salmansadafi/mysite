@@ -22,7 +22,8 @@ from django.contrib.sitemaps.views import sitemap
 from website.sitemaps import StaticViewSitemap
 from blog.sitemaps import BlogSitemap
 import debug_toolbar
-
+from django.urls import path,re_path
+from django.views.generic import TemplateView
 
 sitemaps = {
     "static": StaticViewSitemap,
@@ -32,14 +33,15 @@ sitemaps = {
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('website.urls')),
-    path('blog/',include('blog.urls')),
-    path('sitemap.xml', sitemap,
-        {'sitemaps': sitemaps},
-        name='django.contrib.sitemaps.views.sitemap'),
+    re_path(r'^.*$', TemplateView.as_view(template_name="coming_soon.html")),
     path('robots.txt', include('robots.urls')),
     path('__debug__/', include(debug_toolbar.urls)),
     path('summernote/', include('django_summernote.urls')),
+    path('sitemap.xml', sitemap,
+        {'sitemaps': sitemaps},
+        name='django.contrib.sitemaps.views.sitemap'),
+        path('',include('website.urls')),
+    path('blog/',include('blog.urls')),
     path('captcha/', include('captcha.urls')),
     path('accounts/', include('accounts.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
