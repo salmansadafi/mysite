@@ -1,5 +1,5 @@
 {
-  "app": "dgango-travel",
+  "app": "my-dgango-travel",
   "port": 80,
   "build": {
     "location": "iran"
@@ -10,7 +10,7 @@
       "mountTo": "path/to/folder"
     },
     {
-      "name": "static",
+      "name": "database",
       "mountTo": "path/to/folder"
     }
   ]
