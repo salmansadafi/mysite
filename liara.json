@@ -1,5 +1,5 @@
 {
-  "app": "my-dgango-travel",
+  "app": "dgango-travel",
   "port": 80,
   "build": {
     "location": "iran"
@@ -8,6 +8,10 @@
     {
       "name": "media",
       "mountTo": "/usr/src/app/media"
+    },
+    {
+      "name": "database",
+      "mountTo": "/usr/src/app/database"
     }
   ]
 }
