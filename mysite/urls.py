@@ -33,7 +33,7 @@ sitemaps = {
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    re_path(r'^.*$', TemplateView.as_view(template_name="coming_soon.html")),
+    #re_path(r'^.*$', TemplateView.as_view(template_name="coming_soon.html")),
     path('robots.txt', include('robots.urls')),
     path('__debug__/', include(debug_toolbar.urls)),
     path('summernote/', include('django_summernote.urls')),
