@@ -16,6 +16,9 @@ import dj_database_url
 from dotenv import load_dotenv
 load_dotenv()
 
+from decouple import config
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -46,6 +49,7 @@ INSTALLED_APPS = [
     'taggit',
     'django_summernote',
     'captcha',
+    'compressor',
 ]
 
 
@@ -155,3 +159,10 @@ EMAIL_HOST_PASSWORD = 'ncyj cjhj qzzt cqny'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+]
+COMPRESS_ENABLED = True
+COMPRESS_OFFLINE = True  # برای جمع‌آوری در زمان collectstatic

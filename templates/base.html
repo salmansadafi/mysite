@@ -1,8 +1,13 @@
 {% load static %}
+{% load compress %}
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
 <head>
+    {% compress css %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/extra.css' %}">
+    {% endcompress %}
     <!-- Mobile Specific Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon-->
@@ -230,6 +235,11 @@
     <script src="{% static 'js/mail-script.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
     
+
+    {% compress js %}
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/extra.js' %}"></script>
+    {% endcompress %}
             
        
 </body>
