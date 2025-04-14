@@ -18,7 +18,10 @@ SITE_ID = 2
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default='sqlite:///dummy.db')
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 
@@ -29,5 +32,12 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
-# COMPRESS_ENABLED = False
-# COMPRESS_OFFLINE = False
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+]
+
+# compressor
+COMPRESS_ENABLED = True
+COMPRESS_OFFLINE = True  # برای جمع‌آوری در زمان collectstatic

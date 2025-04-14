@@ -9,9 +9,9 @@ SECRET_KEY = 'django-insecure-v-#0e6(@123=kkn-ctw$*&#ib3q4vcqpzl5+t23p8xtfrkyi!_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-INSTALLED_APPS += ['compressor']
+#INSTALLED_APPS += ['compressor']
 
-ALLOWED_HOSTS = ["https://dgango-travel.liara.run/", "dgango-travel.liara.run","www.django-travel.liara.run"]
+ALLOWED_HOSTS = ["127.0.0.1","https://dgango-travel.liara.run/", "dgango-travel.liara.run","www.django-travel.liara.run"]
 
 # sites framework
 SITE_ID = 2
@@ -20,7 +20,10 @@ SITE_ID = 2
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default='sqlite:///dummy.db')
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 
@@ -31,13 +34,4 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    # other finders..
-    'compressor.finders.CompressorFinder',
-)
 
-
-COMPRESS_ENABLED = True
-COMPRESS_OFFLINE = True

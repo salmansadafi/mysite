@@ -49,7 +49,15 @@ INSTALLED_APPS = [
     'taggit',
     'django_summernote',
     'captcha',
+    'compressor',
 ]
+#compressor
+
+COMPRESS_ENABLED = False  # برای حالت dev فشرده‌سازی غیرفعال است
+COMPRESS_OFFLINE = False  # فشرده‌سازی آفلاین غیرفعال است
+COMPRESS_URL = '/static/'  # مسیر URL فایل‌های استاتیک
+COMPRESS_ROOT = BASE_DIR / 'static'  # مسیر دایرکتوری فایل‌های استاتیک
+
 
 
 # robots
@@ -157,13 +165,3 @@ EMAIL_HOST_USER = 'sadafitehran.ms@gmail.com'
 EMAIL_HOST_PASSWORD = 'ncyj cjhj qzzt cqny'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    # other finders..
-    'compressor.finders.CompressorFinder',
-)
-
-COMPRESS_ENABLED = True
-COMPRESS_OFFLINE = True  # برای جمع‌آوری در زمان collectstatic
