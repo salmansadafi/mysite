@@ -156,3 +156,14 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'sadafitehran.ms@gmail.com'
 EMAIL_HOST_PASSWORD = 'ncyj cjhj qzzt cqny'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # other finders..
+    'compressor.finders.CompressorFinder',
+)
+
+COMPRESS_ENABLED = True
+COMPRESS_OFFLINE = True  # برای جمع‌آوری در زمان collectstatic

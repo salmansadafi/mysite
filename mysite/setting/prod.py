@@ -9,6 +9,8 @@ SECRET_KEY = 'django-insecure-v-#0e6(@123=kkn-ctw$*&#ib3q4vcqpzl5+t23p8xtfrkyi!_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+INSTALLED_APPS += ['compressor']
+
 ALLOWED_HOSTS = ["https://dgango-travel.liara.run/", "dgango-travel.liara.run","www.django-travel.liara.run"]
 
 # sites framework
@@ -28,3 +30,14 @@ MEDIA_ROOT=BASE_DIR/'media'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # other finders..
+    'compressor.finders.CompressorFinder',
+)
+
+
+COMPRESS_ENABLED = True
+COMPRESS_OFFLINE = True

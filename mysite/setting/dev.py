@@ -9,7 +9,7 @@ SECRET_KEY = 'django-insecure-v-#0e6(@123=kkn-ctw$*&#ib3q4vcqpzl5+t23p8xtfrkyi!_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # sites framework
 SITE_ID = 2
@@ -28,3 +28,6 @@ MEDIA_ROOT=BASE_DIR/'media'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+
+# COMPRESS_ENABLED = False
+# COMPRESS_OFFLINE = False
